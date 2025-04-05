@@ -1,39 +1,40 @@
-# 🚀 CryptoWeather Nexus
+# 🌐 CryptoWeather Nexus Dashboard
 
-A **modern multi-page dashboard** integrating live **cryptocurrency data**, **weather information**, and **real-time notifications** using **Next.js**, **Redux**, and **WebSocket**. Designed for responsiveness, scalability, and rich user interaction.
+A real-time dashboard integrating cryptocurrency markets, global weather data, and crypto news feeds. Built with Next.js 13+ and modern web technologies.
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-000?style=for-the-badge&logo=vercel&logoColor=white)](https://userlogy-assignment.vercel.app)  
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/akshayyy22/CryptoWeather-Nexus.git)
 
 ---
 
 ## 📌 Project Overview
 
 **Goal:**  
-Create and publicly deploy a dashboard that combines three domains:
+Create and publicly deploy a dashboard that combines three domains:  
 
-- 📍 **Weather Insights** — Real-time data for major cities  
-- 💰 **Cryptocurrency Stats** — Live prices, 24h change, and market caps  
-- 📰 **Crypto News** — Headlines from reputable sources  
+- **Weather Insights** — Real-time data for major cities (London, New York, Tokyo)  
+- **Cryptocurrency Stats** — Live prices, 24h change, and market caps  
+- **Crypto News** — Headlines from reputable sources  
 
-**Duration:** 2 Days  
-**Live URL:** [https://cryptoweather.vercel.app](https://cryptoweather.vercel.app)  
-**GitHub Repository:** [github.com/yourusername/cryptoweather-nexus](https://github.com/yourusername/cryptoweather-nexus)
+**Duration:** Completed in 2 days  
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-| Tool             | Purpose                            |
-|------------------|-------------------------------------|
-| **Next.js 13+**   | App architecture and routing        |
-| **React (Hooks)**| State management and lifecycle       |
-| **Redux + Thunk**| Global state and async handling      |
-| **Tailwind CSS** | Styling and responsiveness           |
+| Tool                  | Purpose                            |
+|-----------------------|-------------------------------------|
+| **Next.js 13+**       | App architecture and routing       |
+| **React (Hooks)**     | State management and lifecycle     |
+| **Redux + Thunk**     | Global state and async handling    |
+| **Tailwind CSS**      | Styling and responsiveness         |
 | **CoinCap API/WebSocket** | Live crypto prices and alerts |
-| **OpenWeatherMap API** | Weather information            |
-| **NewsData.io API** | Crypto news headlines            |
+| **Open-Meteo API**    | Weather information                |
+| **CryptoPanic API**   | Crypto news headlines              |
 
 ---
 
-## 🧩 Features
+## ✨ Features
 
 ### 📊 Dashboard (Multi-section)
 - **Weather Section:** Temperature, humidity, and condition cards for New York, London, and Tokyo.
@@ -41,12 +42,12 @@ Create and publicly deploy a dashboard that combines three domains:
 - **News Section:** Top 5 latest crypto news headlines.
 
 ### 🔍 Detail Pages
-- **/weather/[city]:** Historical charts, graphs, and trends.
-- **/crypto/[coin]:** Extended market metrics, historical performance.
+- `/weather/[city]`: Historical charts, graphs, and trends.
+- `/crypto/[coin]`: Extended market metrics and historical performance.
 
 ### 🔔 Real-Time Notifications
 - Connected to CoinCap WebSocket.
-- Instant alerts for price spikes and simulated weather events (type-tagged: `price_alert`, `weather_alert`).
+- Instant alerts for price spikes or simulated weather events (`price_alert`, `weather_alert`).
 - Toast-style UI with contextual coloring.
 
 ### 🌐 Routing & SSR
@@ -67,52 +68,37 @@ Create and publicly deploy a dashboard that combines three domains:
 
 | Type         | Source                         | Notes                          |
 |--------------|--------------------------------|--------------------------------|
-| Weather      | [OpenWeatherMap](https://openweathermap.org/api) | 3-city data, fallback ready |
-| Crypto Data  | [CoinCap](https://coincap.io) + [CoinGecko](https://www.coingecko.com/en/api) | Live price + backup |
-| News         | [NewsData.io](https://newsdata.io/) | 5-top headlines               |
+| Weather      | [Open-Meteo API](https://open-meteo.com) | Real-time data for 3 cities   |
+| Crypto Data  | [CoinCap + CoinGecko](https://coincap.io) | Live price + backup           |
+| News         | [CryptoPanic API](https://cryptopanic.com) | Top 5 headlines               |
 | WebSocket    | [CoinCap WS](https://docs.coincap.io/) | BTC/ETH live price feed       |
 
 ---
 
 ## 💡 Challenges Faced & Solutions
 
-### 1. **WebSocket Integration Delays**
+### 1. WebSocket Integration Delays
 - **Problem:** CoinCap WebSocket delayed initial payload delivery.
 - **Solution:** Fallback mechanism using REST fetch to instantly populate data while waiting for socket stream.
 
-### 2. **Inconsistent API Structures**
+### 2. Inconsistent API Structures
 - **Problem:** CoinCap and CoinGecko JSON schemas differ slightly, making direct switching hard.
 - **Solution:** Created abstraction functions (`normalizeCoinData()`) to transform various formats into a unified Redux-compatible structure.
 
-### 3. **Simulated Weather Alerts**
-- **Problem:** No real-time weather WebSocket API.
-- **Solution:** Injected simulated alerts via Redux actions at intervals, tagged as `weather_alert`.
-
-### 4. **Partial API Failures**
+### 3. Partial API Failures
 - **Problem:** API rate limits or failures caused broken components.
 - **Solution:** Introduced fallback UIs with loading/error states and cached previous results using local storage.
 
 ---
 
-## 🧪 Optional Enhancements
-
-- Unit tests for:
-  - Redux reducers (favorites, alert handler).
-  - WebSocket message parsing.
-- Dark Mode toggle using Tailwind + context.
-
----
-
 ## 🚀 Deployment
 
-- **Platform:** [Vercel](https://vercel.com/)  
-- **Env Vars:** Managed via `.env.local` file for API keys.
+- **Platform:** Vercel  
+- **Env Vars:** Managed via `.env.local` file for API keys  
 
 ---
 
 ## 📂 Repository Structure
-
-```
 /app
   /components
     /WeatherCard
@@ -137,7 +123,7 @@ Create and publicly deploy a dashboard that combines three domains:
   tailwind.config.js
 .env.local
 README.md
-```
+
 
 ---
 
@@ -146,15 +132,15 @@ README.md
 - [Next.js Docs](https://nextjs.org/docs)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [CoinCap WebSocket Docs](https://docs.coincap.io/)
-- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Open-Meteo API](https://open-meteo.com)
 - [CoinGecko API](https://www.coingecko.com/en/api)
-- [NewsData.io](https://newsdata.io/)
+- [CryptoPanic API](https://cryptopanic.com)
 
 ---
 
-## ✉️ Submission Summary
+## ✉️ Contact Information
 
-- ✅ Public Deployed App  
-- ✅ GitHub with commit history  
-- ✅ Structured README + Documentation  
-- ✅ Summary of technical challenges + solutions  
+Created by Akshay Esackimuthu  
+Email: akshayesackimuthu@gmail.com  
+LinkedIn: [linkedin.com/in/akshay-esackimuthu](https://linkedin.com/in/akshay-esackimuthu)  
+GitHub: [github.com/akshayyy22](https://github.com/akshayyy22)
